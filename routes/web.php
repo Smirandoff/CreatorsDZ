@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BaseController::class, 'index']);
 Route::get('/video-test', [BaseController::class, 'videoTest']);
+Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('test.upload');

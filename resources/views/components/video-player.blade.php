@@ -1,4 +1,4 @@
-<div>
+<div class="section-padding mb-4">
   <video id="{{$id}}" class="video-js {{$theme ? 'vjs-theme-'.$theme : 'vjs-default-skin'}} vjs-big-play-centered"
     controls preload="auto" width="{{$width}}" height="{{$height}}">
     <p class="vjs-no-js">
