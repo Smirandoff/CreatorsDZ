@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BaseController::class, 'index']);
+Route::get('/video-test', [BaseController::class, 'videoTest']);
