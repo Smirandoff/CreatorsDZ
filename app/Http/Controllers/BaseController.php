@@ -21,16 +21,16 @@ class BaseController extends Controller
         ]);
         $path = Str::random(16).'.'.$request->video->getClientOriginalExtension();
         $request->video->storeAs('public/uploads', $path);
-        VideoTest::delete();
+        VideoTest::truncate();
         $video = VideoTest::create([
             'original_name' => $request->video->getClientOriginalName(),
             'real_path' => $path,
         ]);
         ConvertVideoForStreaming::dispatch($video);
-        return redirect('/uploader')
+        return redirect()->route('test.video')
             ->with(
-                'message',
-                'Votre video sera disponible sous peu'
+                'success',
+                'Votre vidéo sera disponible sous peu'
             );
 
     }
