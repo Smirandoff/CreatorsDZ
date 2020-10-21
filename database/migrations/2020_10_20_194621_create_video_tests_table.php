@@ -18,7 +18,7 @@ class CreateVideoTestsTable extends Migration
             $table->string('src_360')->nullable();
             $table->string('src_480')->nullable();
             $table->string('src_720')->nullable();
-            $table->string('real_path');
+            $table->string('real_path')->nullable();
             $table->string('original_name');
             $table->datetime('uploaded_at')->nullable();
             $table->timestamps();
