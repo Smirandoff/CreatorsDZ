@@ -10,8 +10,8 @@
 </div>
 @endif
 
-<x-video-player source360="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4"
-  source480="http://media.xiph.org/mango/tears_of_steel_1080p.webm" class="mb-4  "></x-video-player>
+<x-video-player source360="{{$video && $video->src_360 ? $video->src_360 : 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'}}"
+  source480="{{$video && $video->src_480 ? $video->src_480 : 'http://media.xiph.org/mango/tears_of_steel_1080p.webm'}}" source720="{{ $video && $video->src_720 ? $video->src_720 : null}}" class="mb-4  "></x-video-player>
 
 <form action="{{route('test.upload')}}" method="POST" enctype="multipart/form-data" class="mb-4">
   @csrf

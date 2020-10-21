@@ -13,7 +13,8 @@ class BaseController extends Controller
         return view('index'); 
     }
     public function videoTest(){
-        return view('videoTest');
+        $video = VideoTest::first();
+        return view('videoTest')->with(compact('video'));
     }
     public function uploadVideoTest(Request $request){
         $request->validate([
