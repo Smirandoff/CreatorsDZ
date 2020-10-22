@@ -18,21 +18,19 @@ class BaseController extends Controller
     }
     public function uploadVideoTest(Request $request){
         $request->validate([
-            'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            'file' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
         ]);
-        $path = Str::random(16).'.'.$request->video->getClientOriginalExtension();
-        $request->video->storeAs('public/uploads', $path);
+        $path = Str::random(16).'.'.$request->file->getClientOriginalExtension();
+        $request->file->storeAs('public/uploads', $path);
         VideoTest::truncate();
         $video = VideoTest::create([
-            'original_name' => $request->video->getClientOriginalName(),
+            'original_name' => $request->file->getClientOriginalName(),
             'real_path' => $path,
         ]);
         ConvertVideoForStreaming::dispatch($video);
-        return redirect()->route('test.video')
-            ->with(
-                'success',
-                'Votre vidéo sera disponible sous peu'
-            );
+        return response()->json([
+            'message' => 'La vidéo à été uploadé avec succès, veuillez revenir dans quelques minutes en attendant que sa conversion/compression soit effectué'
+        ]);
 
     }
 }

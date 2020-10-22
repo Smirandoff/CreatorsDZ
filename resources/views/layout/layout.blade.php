@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="Askbootstrap">
       <meta name="author" content="Askbootstrap">
+      <meta name="token" content="{{csrf_token()}}">
       <title>{{config('app.name')}} | @yield('title')</title>
       <link rel="icon" type="{{asset('image/png')}}" href="{{asset('img/favicon.png')}}">
       @include('layout.partials.styles')
