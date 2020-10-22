@@ -28,6 +28,7 @@
     headers: {
         'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
     },
+    timeout: 600000,
     init: function(){
       this.on('success', function(file, response){
         $("#uploadSuccess").text(response.message);
