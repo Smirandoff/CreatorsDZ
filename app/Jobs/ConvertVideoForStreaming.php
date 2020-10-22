@@ -64,7 +64,6 @@ class ConvertVideoForStreaming implements ShouldQueue
             ->toDisk('public')
             ->inFormat(new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
             ->save($title720);
-        Storage::disk('public')->delete('uploads/'.$this->video->real_path);
         $this->video->real_path = null;
         $this->video->src_360 = $title360;
         $this->video->src_480 = $title480;
