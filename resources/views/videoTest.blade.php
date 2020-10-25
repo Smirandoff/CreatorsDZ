@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="alert alert-success" role="alert" id="uploadSuccess" style="display:none;">
-   
+
 </div>
 <x-video-player
   source360="{{$video && $video->src_360 ? $video->src_360 : 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'}}"
@@ -23,6 +23,7 @@
 <script>
   $(function(){
     Dropzone.autoDiscover = false;
+    var nb_tries = 1;
     var dropzone = $("#myAwesomeDropzone").dropzone({
     url: "{{route('test.upload')}}",
     headers: {
@@ -34,8 +35,18 @@
         $("#uploadSuccess").text(response.message);
         $("#uploadSuccess").show()
         window.scrollTo(0, 0);
-    })
+      })
+    },
+    error: function(file, errorMessage, xhr){
+    if (xhr.status != 422 && file && nb_tries < 3) {
+        nb_tries++;
+        //remove item from preview
+        this.removeFile(file);
+        //duplicate File objet
+        new File([file], file.name, { type: file.type });
+        this.uploadFile(file);
     }
+},
 }); 
   }); 
 </script>
