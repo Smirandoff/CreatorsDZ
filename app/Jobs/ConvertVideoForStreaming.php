@@ -15,6 +15,14 @@ use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 class ConvertVideoForStreaming implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * The number of seconds the job can run before timing out.
+     *
+     * @var int
+     */
+    public $timeout = 1800;
+
     public $video;
     /**
      * Create a new job instance.
@@ -64,6 +72,7 @@ class ConvertVideoForStreaming implements ShouldQueue
             ->toDisk('public')
             ->inFormat(new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
             ->save($title720);
+        
         $this->video->real_path = null;
         $this->video->src_360 = $title360;
         $this->video->src_480 = $title480;
