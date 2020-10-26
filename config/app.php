@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -166,6 +167,7 @@ return [
          * Package Service Providers...
          */
         ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
 
         /*
          * Application Service Providers...
