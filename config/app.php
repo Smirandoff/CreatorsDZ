@@ -53,9 +53,13 @@ return [
     |
     */
 
+    'base_url' => env('APP_BASEURL', 'localhost'),
+
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
+
+    'admin_subdomain' => env('APP_ADMIN_SUBDOMAIN', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +171,6 @@ return [
          * Package Service Providers...
          */
         ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,6 +180,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+
 
     ],
 
