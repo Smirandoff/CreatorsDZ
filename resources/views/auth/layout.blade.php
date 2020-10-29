@@ -45,6 +45,5 @@
                 </div>
             </div>
         </section>
-        @include('auth.partials.layout')
     </body>
 </html>

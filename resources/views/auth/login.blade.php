@@ -3,7 +3,8 @@
 @section('authtitle', 'Connexion')
 
 @section('form')
-<form action="index.html">
+<form method="POST">
+    @csrf
     <div class="form-group">
         <label>Adresse mail</label>
         <input type="text" name="email" class="form-control" placeholder="Entrer l'adresse mail">
@@ -12,7 +13,7 @@
         <label>Password</label>
         <input type="password" name="password" class="form-control" placeholder="Entrer votre mot de passe">
     </div>
-    <div class="form-group custom-control custom-checkbox">
+    <div class="form-group custom-control custom-checkbox align-items-end d-flex">
         <input type="checkbox" name='remember' class="custom-control-input" id="customCheck1">
         <label class="custom-control-label" for="customCheck1">Se souvenir du mot de passe</label>
     </div>
@@ -25,6 +26,6 @@
     </div>
 </form>
 <div class="text-center mt-5">
-    <p class="light-gray">Vous n'avez pas encore de compte ?<a href="register.html">S'inscrire</a></p>
+    <p class="light-gray">Vous n'avez pas encore de compte ? <a href="{{route('register')}}">S'inscrire</a></p>
 </div>
 @endsection

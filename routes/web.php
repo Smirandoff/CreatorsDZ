@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BaseController::class, 'index']);
+Route::get('/', [BaseController::class, 'index'])->middleware('auth');
 Route::get('/video-test', [BaseController::class, 'videoTest'])->name('test.video');
 Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('test.upload');
