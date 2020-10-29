@@ -13,9 +13,6 @@
                                 <p>It is a long established fact that a reader <br> will be distracted by the readable.</p>
                             </div>
                             @yield('form')
-                            <div class="text-center mt-5">
-                                <p class="light-gray">Vous n'avez pas encore de compte ?<a href="register.html">S'inscrire</a></p>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-7">

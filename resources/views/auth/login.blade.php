@@ -24,4 +24,7 @@
         </div>
     </div>
 </form>
+<div class="text-center mt-5">
+    <p class="light-gray">Vous n'avez pas encore de compte ?<a href="register.html">S'inscrire</a></p>
+</div>
 @endsection
