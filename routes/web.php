@@ -19,9 +19,9 @@ Route::get('/video-test', [BaseController::class, 'videoTest'])->name('test.vide
 Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('test.upload');
 
 Route::middleware(['auth'])->group(function(){
-  Route::get('/', [BaseController::class, 'index']);
+  Route::get('/', [BaseController::class, 'index'])->name('index');
   Route::prefix('profiles/{user}')->group(function(){
-    Route::get('/', [ProfileController::class, 'index']);
-    Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific');
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific')->name('profile.edit');
   });
 });
