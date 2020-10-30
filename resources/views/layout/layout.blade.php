@@ -18,6 +18,7 @@
          <div id="content-wrapper">
             <div class="container-fluid pb-0">
                @include('layout.partials.mobileSearch')
+               <x-alerts></x-alerts>
                @yield('content')
             </div>
             @include('layout.partials.footer')
