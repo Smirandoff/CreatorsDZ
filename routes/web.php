@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BaseController::class, 'index'])->middleware('auth');
 Route::get('/video-test', [BaseController::class, 'videoTest'])->name('test.video');
 Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('test.upload');
+
+Route::middleware(['auth'])->group(function(){
+  Route::get('/', [BaseController::class, 'index']);
+  Route::prefix('profiles')->group(function(){
+    Route::get('{user}', [ProfileController::class, 'index']);
+  });
+});
