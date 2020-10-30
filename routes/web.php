@@ -20,7 +20,8 @@ Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('te
 
 Route::middleware(['auth'])->group(function(){
   Route::get('/', [BaseController::class, 'index']);
-  Route::prefix('profiles')->group(function(){
-    Route::get('{user}', [ProfileController::class, 'index']);
+  Route::prefix('profiles/{user}')->group(function(){
+    Route::get('/', [ProfileController::class, 'index']);
+    Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific');
   });
 });
