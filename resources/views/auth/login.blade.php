@@ -7,8 +7,8 @@
     @csrf
     <div class="form-group">
         <label>Adresse mail</label>
-        <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-            placeholder="Entrer l'adresse mail">
+        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+            placeholder="Entrer l'adresse mail" value="{{old('email')}}">
         @error('email')
         <div class="invalid-feedback">
             {{$message}}
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" placeholder="Entrer votre mot de passe">
+        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entrer votre mot de passe">
         @error('password')
         <div class="invalid-feedback">
             {{$message}}
