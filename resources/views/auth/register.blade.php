@@ -7,23 +7,48 @@
     @csrf
     <div class="form-group">
         <label>Prénom</label>
-        <input type="text" name="first_name" class="form-control" placeholder="Entrer votre prénom">
+        <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Entrer votre prénom">
+        @error('first_name')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group">
         <label>Nom</label>
-        <input type="text" name="last_name" class="form-control" placeholder="Entrer votre nom">
+        <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Entrer votre nom">
+        @error('last_name')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group">
         <label>Adresse mail</label>
-        <input type="text" name="email" class="form-control" placeholder="Entrer votre adresse mail">
+        <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Entrer votre adresse mail">
+        @error('email')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group">
         <label>Mot de passe</label>
-        <input type="password" name="password" class="form-control" placeholder="Entrer votre mot de passe">
+        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entrer votre mot de passe">
+        @error('password')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group">
         <label>Confirmation du mot de passe</label>
-        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirmer votre mot de passe">
+        <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirmer votre mot de passe">
+        @error('password_confirmation')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="mt-4">
         <div class="row">

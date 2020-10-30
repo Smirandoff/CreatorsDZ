@@ -7,11 +7,22 @@
     @csrf
     <div class="form-group">
         <label>Adresse mail</label>
-        <input type="text" name="email" class="form-control" placeholder="Entrer l'adresse mail">
+        <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
+            placeholder="Entrer l'adresse mail">
+        @error('email')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Entrer votre mot de passe">
+        <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" placeholder="Entrer votre mot de passe">
+        @error('password')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
     </div>
     <div class="form-group custom-control custom-checkbox align-items-end d-flex">
         <input type="checkbox" name='remember' class="custom-control-input" id="customCheck1">
