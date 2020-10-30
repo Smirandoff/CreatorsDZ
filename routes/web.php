@@ -23,5 +23,6 @@ Route::middleware(['auth'])->group(function(){
   Route::prefix('profiles/{user}')->group(function(){
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific')->name('profile.edit');
+    Route::put('/', [ProfileController::class, 'update'])->middleware('auth.specific')->name('profile.update');
   });
 });
