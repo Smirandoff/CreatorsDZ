@@ -6,14 +6,14 @@
       <meta name="author" content="Askbootstrap">
       <title>{{config('app.name')}} | @yield('authtitle')</title>
       <!-- Favicon Icon -->
-      <link rel="icon" type="image/png" href="img/favicon.png">
+      <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
       <!-- Bootstrap core CSS-->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
       <!-- Custom fonts for this template-->
-      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
       <!-- Custom styles for this template-->
-      <link href="css/osahan.css" rel="stylesheet">
+      <link href="{{asset('css/osahan.css')}}" rel="stylesheet">
       <!-- Owl Carousel -->
-      <link rel="stylesheet" href="vendor/owl-carousel/owl.carousel.css">
-      <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css">
+      <link rel="stylesheet" href="{{asset('vendor/owl-carousel/owl.carousel.css')}}">
+      <link rel="stylesheet" href="{{asset('vendor/owl-carousel/owl.theme.css')}}">
 </head>
