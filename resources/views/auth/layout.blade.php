@@ -10,7 +10,7 @@
                             <div class="text-center mb-5 login-main-left-header pt-4">
                                 <img src="{{asset('img/favicon.png')}}" class="img-fluid" alt="LOGO">
                                 <h5 class="mt-3 mb-3">Bienvenue à DZCreators</h5>
-                                <p>It is a long established fact that a reader <br> will be distracted by the readable.</p>
+                                <!--p>It is a long established fact that a reader <br> will be distracted by the readable.</p-->
                             </div>
                             <x-alerts></x-alerts>
                             @yield('form')
