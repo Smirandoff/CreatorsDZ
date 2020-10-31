@@ -50,7 +50,7 @@
      <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
         <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <img alt="Avatar" src="img/user.png">
-        Osahan 
+        {{$user}} 
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
            <a class="dropdown-item" href="account.html"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
