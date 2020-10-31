@@ -46,5 +46,6 @@
                 </div>
             </div>
         </section>
+        @include('auth.partials.script')
     </body>
 </html>
