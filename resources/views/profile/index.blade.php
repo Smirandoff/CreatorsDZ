@@ -18,13 +18,13 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="control-label">Prénom <span class="required">*</span></label>
-                    <input name="first_name" class="form-control border-form-control"value="{{$user->last_name}}" disabled="" type="text">
+                    <input name="first_name" class="form-control border-form-control"value="{{$user->first_name ?? ''}}" disabled="" type="text">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="control-label">Nom <span class="required">*</span></label>
-                    <input name="last_name" class="form-control border-form-control" value="{{$user->last_name}}" disabled="" type="text">
+                    <input name="last_name" class="form-control border-form-control" value="{{$user->last_name ?? ''}}" disabled="" type="text">
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="control-label">Adresse mail <span class="required">*</span></label>
-                    <input name="email" class="form-control border-form-control" value="{{$user->email}}" disabled="" type="email">
+                    <input name="email" class="form-control border-form-control" value="{{$user->email ?? ''}}" disabled="" type="email">
                 </div>
             </div>
             @error('email')
@@ -88,8 +88,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right">
-                <button type="button" class="btn btn-danger border-none"> Annuler </button>
-                <button type="button" class="btn btn-success border-none"> Sauvegarder les changements </button>
+                <button type="button" class="btn btn-success border-none"> Editer </button>
             </div>
         </div>
     </form>
