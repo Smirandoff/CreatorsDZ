@@ -15,13 +15,17 @@ class ProfileController extends Controller
         return view('profile.index')->with(compact('user'));
     }
     public function edit(User $user){
-        return view('profile.index')->with(compact('user'));
+        return view('profile.edit')->with(compact('user'));
     }
     public function update(User $user, Request $request){
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'profile_photo_url' => 'nullable|image|max:4096'
+            'profile_photo_url' => 'nullable|image|max:4096',
+            'phone_number' => 'nullable|numeric',
+            'bank' => 'nullable|string|max:255',
+            'rib' => 'nullable|string|size:10',
+            'address' => 'nullable|string|max:255',
         ]);
         $data = $request->except(['profile_photo_url']);
         if($request->file('profile_photo_url')){
@@ -31,7 +35,7 @@ class ProfileController extends Controller
             }
         }
         $user->update($data);
-        return redirect()->route('profile.index', $user)->withSuccess('La modification de votre profil a été effectuée avec succès !');
+        return redirect()->back()->withSuccess('La modification de votre profil a été effectuée avec succès !');
     }
     public function editPassword(User $user){
         return view('profile.editPassword')->with(compact('user'));

@@ -21,7 +21,6 @@ Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('te
 Route::middleware(['auth'])->group(function(){
   Route::get('/', [BaseController::class, 'index'])->name('index');
   Route::prefix('profiles/{user}')->group(function(){
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific')->name('profile.edit');
     Route::put('/', [ProfileController::class, 'update'])->middleware('auth.specific')->name('profile.update');
     Route::get('edit-password', [ProfileController::class, 'editPassword'])->middleware('auth.specific')->name('profile.editPassword');

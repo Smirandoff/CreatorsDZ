@@ -18,7 +18,7 @@ class IsSpecificUser
     public function handle(Request $request, Closure $next)
     {
         if($request->user->id != auth()->user()->id){
-            return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME)->withError('Vous ne pouvez pas modifier le profil d\'autrui');
         }
         return $next($request);
     }
