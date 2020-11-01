@@ -49,4 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification(){
         SendVerificationEmail::dispatch($this);
     }
+
+    /**
+     * Checks whete the user has access to the app
+     */
+    public function isAllowed(){
+        return $this->state;
+    }
 }

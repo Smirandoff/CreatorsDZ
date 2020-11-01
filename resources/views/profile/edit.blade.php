@@ -77,7 +77,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right">
-                <button type="button" class="btn btn-danger border-none"> Annuler </button>
+                <button type="reset" class="btn btn-danger border-none"> Annuler </button>
                 <button type="submit" class="btn btn-success border-none"> Sauvegarder les changements </button>
             </div>
         </div>
