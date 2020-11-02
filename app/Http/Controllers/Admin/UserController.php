@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\SendWarningNotification;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -28,11 +29,18 @@ class UserController extends Controller
             $data['expired_at'] = $request->expired_at;
         }
         $user->ban($data);
-        return redirect()->back()->withSuccess('L\'utilisateur a correctement été bannis');
+        return redirect()->back()->withSuccess('L\'utilisateur a correctement été bannis !');
     }
     public function unbanUser(User $user){
         $user->unban();
-        return redirect()->back()->withSuccess('L\'utilisateur peut désormais accéder à son compte');
+        return redirect()->back()->withSuccess('L\'utilisateur peut désormais accéder à son compte !');
+    }
+    public function sendWarningToUser(User $user, Request $request){
+        $request->validate([
+            'message' => 'required|string|max:255'
+        ]);
+        $user->notify(new SendWarningNotification($request->message));
+        return redirect()->back()->withSuccess('Votre avertissement a été enregistré avec succès !');
     }
 
 }

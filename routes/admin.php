@@ -31,6 +31,7 @@ Route::middleware('auth:admin')->group(function(){
       Route::get('/', [UserController::class, 'show'])->name('admin.users.show');
       Route::post('ban', [UserController::class, 'banUser'])->name('admin.users.ban');
       Route::post('unban', [UserController::class, 'unbanUser'])->name('admin.users.unban');
+      Route::post('send-warning', [UserController::class, 'sendWarningToUser'])->name('admin.users.send-warning');
     });
   });
 });
