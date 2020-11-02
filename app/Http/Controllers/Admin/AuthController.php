@@ -86,7 +86,7 @@ class AuthController extends Controller
         );
     
         return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('admin.login')->with('status', __($status))
+                    ? redirect()->route('admin.login')->withSuccess('Votre mot de passe a été réinitialisé avec succès, vous pouvez désormais vous connecter avec vos nouvels identifiants')
                     : back()->withErrors(['email' => __($status)]);
     }
 
