@@ -25,5 +25,12 @@ Route::middleware('guest:admin')->group(function(){
 });
 Route::middleware('auth:admin')->group(function(){
   Route::get('/', [BaseController::class, 'index'])->name('admin.index');
-  Route::prefix('users', UserController::class, 'index')->name('admin.users.index');
+  Route::prefix('users')->group(function(){
+    Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
+    Route::prefix('{user}')->group(function(){
+      Route::get('/', [UserController::class, 'show'])->name('admin.users.show');
+      Route::post('ban', [UserController::class, 'banUser'])->name('admin.users.ban');
+      Route::post('unban', [UserController::class, 'unbanUser'])->name('admin.users.unban');
+    });
+  });
 });

@@ -15,6 +15,9 @@ class UserController extends Controller
         $users = User::get();
         return view('admin.users.index');
     }
+    public function show(User $user){
+        return view('admin.users.show')->compact('user');
+    }
     public function banUser(Request $request, User $user){
         $request->validate([
             'expired_at' => 'required_without:is_permanent|date|after:today',
@@ -29,6 +32,7 @@ class UserController extends Controller
     }
     public function unbanUser(User $user){
         $user->unban();
-        return redirect()->back()->withSuccess('L\'utilisateur peux désormais accéder à son compte');
+        return redirect()->back()->withSuccess('L\'utilisateur peut désormais accéder à son compte');
     }
+
 }
