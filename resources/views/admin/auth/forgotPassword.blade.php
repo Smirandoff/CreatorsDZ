@@ -4,6 +4,7 @@
 
 @section('content')
 <form id="forgot_password" method="POST">
+    @csrf
     <div class="msg">
         Entrer votre adresse mail enregistrée. nous vous enverons un lien par mail afin de reinitialiser votre mot de passe.
     </div>
@@ -17,7 +18,7 @@
     </div>
     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">Initialiser mon mot de passe</button>
     <div class="row m-t-20 m-b--5 align-center">
-        <a href="/login">Connexion!</a>
+        <a href="{{route('admin.login')}}">Connexion!</a>
     </div>
 </form>
 @endsection

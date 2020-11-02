@@ -33,7 +33,7 @@
     </div>
     <div class="row m-t-15 m-b--20">
         <div class="col-xs-6 align-right">
-            <a href="/forgot-password">Mot de passe oublié ?</a>
+            <a href="{{route('admin.password.request')}}">Mot de passe oublié ?</a>
         </div>
     </div>
 </form>

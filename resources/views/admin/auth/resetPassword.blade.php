@@ -3,8 +3,18 @@
 @section('title', 'Connexion')
 
 @section('content')
-<form id="sign_in" method="POST">
+<form id="sign_in" method="POST" action="{{route('admin.password.update')}}">
+    @csrf
+    <input type="hidden" name="token" value={{request()->route('token')}}>
     <div class="msg">Nouveau mot de passe</div>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="material-icons">mail</i>
+        </span>
+        <div class="form-line">
+            <input type="email" class="form-control" name="email" placeholder="Votre adresse email" required>
+        </div>
+    </div>
     <div class="input-group">
         <span class="input-group-addon">
             <i class="material-icons">lock</i>
