@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BaseController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,5 @@ Route::middleware('guest:admin')->group(function(){
 });
 Route::middleware('auth:admin')->group(function(){
   Route::get('/', [BaseController::class, 'index'])->name('admin.index');
+  Route::prefix('users', UserController::class, 'index')->name('admin.users.index');
 });
