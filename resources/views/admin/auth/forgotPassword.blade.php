@@ -17,7 +17,7 @@
     </div>
     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">Initialiser mon mot de passe</button>
     <div class="row m-t-20 m-b--5 align-center">
-        <a href="sign-in.html">Connexion!</a>
+        <a href="/login">Connexion!</a>
     </div>
 </form>
 @endsection

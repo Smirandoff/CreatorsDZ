@@ -4,6 +4,7 @@
 
 @section('content')
 <form id="sign_in" method="POST">
+    @csrf
     <div class="msg">Connexion à l'interface de gestion</div>
     <div class="input-group">
         <span class="input-group-addon">
@@ -32,7 +33,7 @@
     </div>
     <div class="row m-t-15 m-b--20">
         <div class="col-xs-6 align-right">
-            <a href="forgot-password.html">Mot de passe oublié ?</a>
+            <a href="/forgot-password">Mot de passe oublié ?</a>
         </div>
     </div>
 </form>
