@@ -11,6 +11,7 @@
         </div>
         <div class="card">
             <div class="body">
+            <x-alerts></x-alerts>
             @yield('content')
             </div>
         </div>
