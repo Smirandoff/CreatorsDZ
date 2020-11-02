@@ -31,6 +31,5 @@ class BaseController extends Controller
         return response()->json([
             'message' => 'La vidéo à été uploadé avec succès, veuillez revenir dans quelques minutes en attendant que sa conversion/compression soit effectué'
         ]);
-
     }
 }

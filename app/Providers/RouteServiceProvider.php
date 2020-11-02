@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const BACKOFFICE_HOME = '/admin';
+    public const BACKOFFICE = '/admin';
 
 
 
