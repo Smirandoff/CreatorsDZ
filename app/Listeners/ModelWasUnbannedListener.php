@@ -7,7 +7,7 @@ use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class ModelWasUnbannedListener
+class ModelWasUnbannedListener implements ShouldQueue
 {
     /**
      * Create the event listener.

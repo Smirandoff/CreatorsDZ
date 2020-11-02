@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 use \Cog\Laravel\Ban\Events\ModelWasBanned;
 
-class ModelWasBannedListener
+class ModelWasBannedListener implements ShouldQueue
 {
     /**
      * Create the event listener.
