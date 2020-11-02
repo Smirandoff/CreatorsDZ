@@ -38,6 +38,6 @@
 </form>
 <div class="text-center mt-5">
     <p class="light-gray">Vous n'avez pas encore de compte ? <a href="{{route('register')}}">S'inscrire</a></p>
-    <p class="light-gray">Vous avez oublié votre mot de passe ? <a href="{{route('register')}}">Initialiser le mot de passe</a></p>
+    <p class="light-gray">Vous avez oublié votre mot de passe ? <br> <a href="{{route('password.request')}}">Réinitialiser le mot de passe</a></p>
 </div>
 @endsection
