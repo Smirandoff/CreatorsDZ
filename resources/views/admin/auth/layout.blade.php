@@ -11,7 +11,7 @@
         </div>
         <div class="card">
             <div class="body">
-            @yield('form')
+            @yield('content')
             </div>
         </div>
     </div>
