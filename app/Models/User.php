@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Jobs\SendResetPasswordEmail;
 use App\Jobs\SendVerificationEmail;
+use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,7 @@ use Cog\Laravel\Ban\Traits\Bannable;
 
 class User extends Authenticatable implements MustVerifyEmail, BannableContract
 {
-    use HasFactory, Notifiable, Bannable;
+    use HasFactory, Notifiable, Bannable, Messagable;
 
     /**
      * The attributes that are mass assignable.
