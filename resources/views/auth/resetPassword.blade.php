@@ -26,7 +26,7 @@
    </div>
    <div class="form-group">
       <label>Confirmation du mot de passe</label>
-      <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" placeholder="Confirmer votre mot de passe">
+      <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirmer votre mot de passe">
       @error('password_confirmation')
       <div class="invalid-feedback">
          {{$message}}
