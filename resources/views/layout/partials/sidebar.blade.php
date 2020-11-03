@@ -1,4 +1,4 @@
-<ul class="sidebar navbar-nav">
+<ul class="sidebar navbar-nav navbar-expand-sm">
   <li class="nav-item active">
      <a class="nav-link" href="index.html">
      <i class="fas fa-fw fa-home"></i>
