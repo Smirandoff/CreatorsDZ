@@ -8,12 +8,21 @@ use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Auth;
 
 class MessengerRepository {
+  /**
+   * Gets all latest threads of all users
+   */
   public function getAllThreads(){
     return Thread::getAllLatest()->get();
   }
+  /**
+   * Gets all the threads of $user
+   */
   public function getUserThreads(User $user){
     return Thread::forUser($user)->latest('updated_at')->get();
   }
+  /**
+   * Creates a new thread
+   */
   public function createNewThread($data){
     $thread = Thread::create([
       'subject' => $data['subject'],
@@ -30,6 +39,9 @@ class MessengerRepository {
     
     return true;
   }
+  /**
+   * Adds a message to the $thread
+   */
   public function addMessageToThread(Thread $thread, $data){
     $thread->activateAllParticipants();
 
