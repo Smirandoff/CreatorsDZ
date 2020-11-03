@@ -18,7 +18,7 @@ class MessengerController extends Controller
      */
     public function index(){
         $threads = $this->repository->getUserThreads(auth()->user());
-        return view('messenger.index');
+        return view('messenger.index')->with(compact('threads'));
     }
     /**
      * If user is a participant of the thread, show it
