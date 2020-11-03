@@ -8,7 +8,6 @@
 @endpush
 
 @section('content')
-<div class="container-fluid upload-details">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-title">
@@ -173,7 +172,6 @@
 		    </div>           
 	    </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
