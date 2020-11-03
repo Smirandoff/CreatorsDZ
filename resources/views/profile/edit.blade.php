@@ -158,7 +158,7 @@
                             <div class="col-sm-7">
 							    <div class="form-group">
 								    <label class="control-label">Confirmer le nouveau mot de passe <span class="required">*</span></label>
-					    		    <input name="password" class="form-control border-form-control" value="" placeholder="Confirmer le nouveau mot de passe" type="password">
+					    		    <input name="password_confirmation" class="form-control border-form-control" value="" placeholder="Confirmer le nouveau mot de passe" type="password">
 							    </div>
 						    </div>
 					    </div>
