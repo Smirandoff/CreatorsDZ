@@ -17,7 +17,7 @@
     </div>
     <div class="row"> 
 		<div class="col-sm-12 col-lg-3">
-			<img src="{{$user->profile_picture ?? ''}}" alt="Photo de profile" class="img-thumbnail">
+			<img src="{{$user->profile_picture}}" alt="Photo de profile" class="img-thumbnail">
 			</br></br>
 			<button class="btn btn-primary btn-lg btn-block" id="but_upload">Editer la photo</button>
 			</br></br>
