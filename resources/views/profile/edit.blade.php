@@ -191,6 +191,9 @@
 </div>
 @endsection
 
+@push('styles')
+<link href="{{asset('css/croppie.css')}}" rel="stylesheet">
+@endpush
 @push('scripts')
 <script src="{{asset('js/croppie.js')}}"></script>
 <script>
@@ -244,6 +247,7 @@
 						$("#actual-profile-photo").attr('src', data.new_photo_url);
 						$("#avatar").attr('src', data.new_photo_url);
 						unloadPage();
+						toastr.success(data.message)
 					}
 				});
 			});

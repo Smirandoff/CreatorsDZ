@@ -99,3 +99,4 @@ function loadPage(){
 function unloadPage(){
   $("#loading-overlay").css('display', 'none');
 }
+toastr.options.positionClass = "toast-bottom-right";
