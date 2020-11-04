@@ -93,10 +93,18 @@ Version: 1.0
 
 })(jQuery); // End of use strict
 
+toastr.options.positionClass = "toast-bottom-right";
+/**
+ * Helper functions
+ */
 function loadPage(){
   $("#loading-overlay").css('display', 'flex');
 }
 function unloadPage(){
   $("#loading-overlay").css('display', 'none');
 }
-toastr.options.positionClass = "toast-bottom-right";
+
+function getFirstErrorMessage(xhrObject){
+  var errors = xhrObject.responseJSON.errors;
+  return errors[Object.keys(errors)[0]][0];
+}

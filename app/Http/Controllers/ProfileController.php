@@ -48,7 +48,7 @@ class ProfileController extends Controller
     }
     public function updateProfilePhoto(User $user, Request $request){
         $request->validate([
-            'profile_photo_url' => 'required|image|max:4096|dimensions:width=170,height:170',
+            'profile_photo_url' => 'required|image|max:4096|dimensions:width=170,height=170',
         ]);
         $profile_photo_url = $this->processImage($request->profile_photo_url);
         $user->profile_photo_url = $profile_photo_url;

@@ -246,8 +246,13 @@
 					success: function (data) {					
 						$("#actual-profile-photo").attr('src', data.new_photo_url);
 						$("#avatar").attr('src', data.new_photo_url);
-						unloadPage();
 						toastr.success(data.message)
+					},
+					error: function(xhr, textStatus, errorThrown){
+						toastr.error(getFirstErrorMessage(xhr));
+					},
+					complete: function () {
+						unloadPage();
 					}
 				});
 			});
