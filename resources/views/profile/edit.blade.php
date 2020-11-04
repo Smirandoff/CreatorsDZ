@@ -38,12 +38,12 @@
 								<input name="first_name"
 									class="form-control border-form-control @error('first_name') is-invalid @enderror"
 									value="{{$user->first_name}}" placeholder="Prénom" type="text">
+								@error('first_name')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('first_name')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -51,12 +51,12 @@
 								<input name="last_name"
 									class="form-control border-form-control @error('last_name') is-invalid @enderror"
 									value="{{$user->last_name}}" placeholder="Nom" type="text">
+								@error('last_name')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('last_name')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
 						</div>
 					</div>
 					<div class="row">
@@ -66,12 +66,12 @@
 								<input name="phone_number"
 									class="form-control border-form-control @error('phone_number') is-invalid @enderror"
 									value="{{$user->phone_number}}" placeholder="+213 000 000 000" type="number">
+								@error('phone_number')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('phone_number')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -87,24 +87,25 @@
 								<label class="control-label">Banque/Poste<span class="required"></span></label>
 								<input name="bank" class="form-control border-form-control @error('bank') is-invalid @enderror"
 									value="{{$user->bank}}" placeholder="Algérie poste" type="text">
+								@error('bank')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('bank')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label class="control-label">RIB<span class="required"></span></label>
 								<input name="rib" class="form-control border-form-control @error('rib') is-invalid @enderror"
 									value="{{$user->rib}}" placeholder="0000000000" type="text">
+								@error('rib')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('rib')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
+
 						</div>
 					</div>
 					<div class="row">
@@ -113,12 +114,12 @@
 								<label class="control-label">Adresse <span class="required">*</span></label>
 								<textarea class="form-control border-form-control @error('address') is-invalid @enderror" name="address"
 									max="255">{{$user->address}}</textarea>
+								@error('address')
+								<div class="invalid-feedback">
+									{{$message}}
+								</div>
+								@enderror
 							</div>
-							@error('address')
-							<div class="invalid-feedback">
-								{{$message}}
-							</div>
-							@enderror
 						</div>
 					</div>
 					<div class="row">
@@ -155,7 +156,7 @@
 			</div>
 			<div class="tab-pane fade" id="nav-access" role="tabpanel" aria-labelledby="nav-access-tab">
 				<form method="POST" action="{{route('profile.updatePassword', $user)}}" id="submitPasswordForm">
-					@csrf 
+					@csrf
 					@method('PUT')
 					<div class="row">
 						<div class="col-sm-7">
