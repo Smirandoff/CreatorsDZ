@@ -154,12 +154,14 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="nav-access" role="tabpanel" aria-labelledby="nav-access-tab">
-				<form method="POST" action="{{route('profile.update', $user)}}">
+				<form method="POST" action="{{route('profile.updatePassword', $user)}}" id="submitPasswordForm">
+					@csrf 
+					@method('PUT')
 					<div class="row">
 						<div class="col-sm-7">
 							<div class="form-group">
 								<label class="control-label">Ancien mot de passe <span class="required">*</span></label>
-								<input name="password" class="form-control border-form-control " value=""
+								<input name="old_password" class="form-control border-form-control " value=""
 									placeholder="Ancien mot de passe" type="password">
 							</div>
 						</div>
@@ -181,7 +183,7 @@
 					<div class="row">
 						<div class="col-sm-12 text-right">
 							<button type="button" class="btn btn-danger border-none"> Annuler </button>
-							<button type="button" class="btn btn-success border-none"> Sauvegarder les changements </button>
+							<button type="submit" class="btn btn-success border-none"> Sauvegarder les changements </button>
 						</div>
 					</div>
 				</form>
@@ -248,7 +250,7 @@
 						$("#avatar").attr('src', data.new_photo_url);
 						toastr.success(data.message)
 					},
-					error: function(xhr, textStatus, errorThrown){
+					error: function(xhr){
 						toastr.error(getFirstErrorMessage(xhr));
 					},
 					complete: function () {
@@ -257,9 +259,30 @@
 				});
 			});
 		});
-		//success: function (data) {					
-			//location.reload();
-		//}
+
+		$("#submitPasswordForm").on("submit", function(e){
+			e.preventDefault();
+
+			$.ajax({
+				type: 'POST',
+				url: $(this).attr('action'),
+				data: $(this).serialize(),
+				beforeSend: function(){
+					loadPage();
+				},
+				complete: function(){
+					unloadPage();
+				},
+				success: function(response){
+					$(this).trigger("reset");
+					toastr.success(response.message);
+				}.bind(this),
+				error: function(xhr){
+					toastr.error(getFirstErrorMessage(xhr));
+				}
+			})
+		})
+		
 	});
 </script>
 @endpush

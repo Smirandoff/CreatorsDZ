@@ -41,9 +41,17 @@ class ProfileController extends Controller
         if(Hash::check($request->old_password, $user->password)){
             $user->password = Hash::make($request->password);
             $user->save();
-            return redirect()->route('profile.index', $user)->withSuccess('Votre mot de passe a été modifié avec succès');
+            return response()->json([
+                'message' => 'Votre mot de passe a été modifié avec succès',
+            ], 200);
         }else {
-            return redirect()->back()->withError('Votre ancien mot de passe est incorrecte !');
+            return response()->json([
+                'errors' => [
+                    'old_password'=> [
+                        'Votre ancien mot de passe est incorrecte !'
+                    ],
+                ],
+            ], 422);
         }
     }
     public function updateProfilePhoto(User $user, Request $request){
