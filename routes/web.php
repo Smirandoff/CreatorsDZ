@@ -24,7 +24,6 @@ Route::middleware(['auth'])->group(function(){
   Route::prefix('profiles/{user}')->group(function(){
     Route::get('edit', [ProfileController::class, 'edit'])->middleware('auth.specific')->name('profile.edit');
     Route::put('/', [ProfileController::class, 'update'])->middleware('auth.specific')->name('profile.update');
-    Route::get('edit-password', [ProfileController::class, 'editPassword'])->middleware('auth.specific')->name('profile.editPassword');
     Route::put('edit-password', [ProfileController::class, 'updatePassword'])->middleware('auth.specific')->name('profile.updatePassword');
     Route::put('edit-profile-photo', [ProfileController::class, 'updateProfilePhoto'])->middleware('auth.specific')->name('profile.updateProfilePhoto');
   });
