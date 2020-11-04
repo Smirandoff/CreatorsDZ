@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Storage;
 
 class User extends Authenticatable implements MustVerifyEmail, BannableContract
 {
@@ -70,5 +71,12 @@ class User extends Authenticatable implements MustVerifyEmail, BannableContract
      */
     public function isAllowed(){
         return $this->state;
+    }
+
+    /**
+     * Profile photo getter
+     */
+    public function getProfilePhotoAttribute(){
+        return Storage::url($this->profile_photo_url);
     }
 }

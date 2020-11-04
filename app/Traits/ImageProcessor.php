@@ -9,7 +9,7 @@ trait ImageProcessor{
   private function generateImageName(){
       do{
         $new_name = Str::random(20);
-        $full_path = config('storage.profile_pictures_path').$new_name.'.jpg';
+        $full_path = config('filesystems.profile_photos_path').$new_name.'.jpg';
       }while(Storage::disk('public')->exists($full_path));
       return $full_path;
   }

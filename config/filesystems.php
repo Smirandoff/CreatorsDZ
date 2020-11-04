@@ -82,4 +82,9 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    /**
+     * Additional data for the application
+     */
+    'profile_photos_path' => 'profile_photos/',
+
 ];

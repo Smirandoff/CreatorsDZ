@@ -21,19 +21,12 @@ class ProfileController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'profile_photo_url' => 'nullable|image|max:4096',
             'phone_number' => 'nullable|numeric',
             'bank' => 'nullable|string|max:255',
             'rib' => 'nullable|string|size:10',
             'address' => 'nullable|string|max:255',
         ]);
-        $data = $request->except(['profile_photo_url']);
-        if($request->file('profile_photo_url')){
-            $profile_photo_url = $this->processImage($request->profile_photo_url);
-            if($profile_photo_url){
-                $data['profile_photo_url'] = $profile_photo_url;
-            }
-        }
+        $data = $request->validated();
         $user->update($data);
         return redirect()->back()->withSuccess('La modification de votre profil a été effectuée avec succès !');
     }
@@ -52,5 +45,17 @@ class ProfileController extends Controller
         }else {
             return redirect()->back()->withError('Votre ancien mot de passe est incorrecte !');
         }
+    }
+    public function updateProfilePhoto(User $user, Request $request){
+        $request->validate([
+            'profile_photo_url' => 'required|image|max:4096|dimensions:width=170,height:170',
+        ]);
+        $profile_photo_url = $this->processImage($request->profile_photo_url);
+        $user->profile_photo_url = $profile_photo_url;
+        $user->save();
+        return response()->json([
+            'message' => 'Votre photo de profil a correctement été mise à jour',
+            'new_photo_url' => $user->profile_photo,
+        ], 200);
     }
 }
