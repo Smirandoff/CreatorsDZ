@@ -13,8 +13,8 @@ trait ImageProcessor{
       }while(Storage::disk('public')->exists($full_path));
       return $full_path;
   }
-  private function processImage($image){
-    $resize = Image::make($image)->fit(170)->encode('jpg');
+  private function processImage($image, $encode='jpg'){
+    $resize = Image::make($image)->fit(170)->encode($encode);
     $full_path = $this->generateImageName();
     $save =  Storage::disk('public')->put($full_path, $resize->__ToString());
     if($save) {
