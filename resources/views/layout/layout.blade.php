@@ -12,6 +12,7 @@
       @include('layout.partials.styles')
    </head>
    <body id="page-top">
+      @include('layout.partials.loader')
       @include('layout.partials.navbar')
       <div id="wrapper">
          @include('layout.partials.sidebar')

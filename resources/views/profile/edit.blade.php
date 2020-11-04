@@ -146,6 +146,9 @@
 								<p>Selectionner une image: <input class="btn" type="file" id="images"></p>
 								<p><button class="btn btn-outline-success crop_image">Charger l'image</button></p>
 							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div id="upload-image-i"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -234,9 +237,13 @@
 					processData: false,
 					contentType: false,
 					url: "{{route('profile.updateProfilePhoto', $user)}}",
+					beforeSend: function(){
+						loadPage();
+					},
 					success: function (data) {					
 						$("#actual-profile-photo").attr('src', data.new_photo_url);
 						$("#avatar").attr('src', data.new_photo_url);
+						unloadPage();
 					}
 				});
 			});

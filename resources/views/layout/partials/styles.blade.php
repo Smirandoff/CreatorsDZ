@@ -8,4 +8,5 @@
 <link rel="stylesheet" href="{{asset('vendor/owl-carousel/owl.carousel.css')}}">
 <link rel="stylesheet" href="{{asset('vendor/owl-carousel/owl.theme.css')}}">
 <link href="{{asset('css/croppie.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('css/custom.css')}}">
 @stack('styles')

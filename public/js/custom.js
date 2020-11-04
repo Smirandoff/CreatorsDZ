@@ -92,3 +92,10 @@ Version: 1.0
   });
 
 })(jQuery); // End of use strict
+
+function loadPage(){
+  $("#loading-overlay").css('display', 'flex');
+}
+function unloadPage(){
+  $("#loading-overlay").css('display', 'none');
+}
