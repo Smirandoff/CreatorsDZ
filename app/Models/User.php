@@ -77,6 +77,6 @@ class User extends Authenticatable implements MustVerifyEmail, BannableContract
      * Profile photo getter
      */
     public function getProfilePhotoAttribute(){
-        return Storage::url($this->profile_photo_url);
+        return $this->profile_photo_url ? Storage::url($this->profile_photo_url) : asset('img/user.png');
     }
 }
