@@ -11,6 +11,7 @@
   source480="{{$video && $video->src_480 ? $video->src_480 : 'http://media.xiph.org/mango/tears_of_steel_1080p.webm'}}"
   source720="{{ $video && $video->src_720 ? $video->src_720 : null}}" class="mb-4"></x-video-player>
 
+<progress id="uploadProgress" value="0" max="100" style="display:none;"></progress>
 <div id="myAwesomeDropzone"
   style="width: 50%; height:300px; font-size:25px; display:flex; justify-content:center; align-items:center; border:1px solid black; text-align:center; margin:auto;">
   <span class="dz-default dz-message">cliquez ici pour uploader une nouvelle vidéo <br> ou glissez déposez la vidéo
@@ -20,34 +21,32 @@
 
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script>
 <script>
   $(function(){
-    Dropzone.autoDiscover = false;
-    var nb_tries = 1;
-    var dropzone = $("#myAwesomeDropzone").dropzone({
-    url: "{{route('test.upload')}}",
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
-    },
-    timeout: 600000,
-    init: function(){
-      this.on('success', function(file, response){
-        $("#uploadSuccess").text(response.message);
-        $("#uploadSuccess").show()
-        window.scrollTo(0, 0);
-      })
-    },
-    error: function(file, errorMessage, xhr){
-    if (xhr.status != 422 && file && nb_tries < 3) {
-        nb_tries++;
-        //remove item from preview
-        this.removeFile(file);
-        //duplicate File objet
-        new File([file], file.name, { type: file.type });
-        this.uploadFile(file);
+    var r = new Resumable({
+      target:'/upload-video-test', 
+      maxFiles: 1,
+      headers: {
+        'X-CSRF-Token' : "{{csrf_token()}}",
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+    // Resumable.js isn't supported, fall back on a different method
+    if(!r.support){
+      
     }
-},
-}); 
+    else {
+      r.assignBrowse($("#myAwesomeDropzone"));
+      r.assignDrop($("#myAwesomeDropzone"));
+      r.on('fileAdded', function(file){
+        $("#uploadProgress").show();
+        r.upload();
+      });
+      r.on('fileProgress', function(file){
+        $("#uploadProgress").val(r.progress() * 100);
+      })
+    }
   }); 
 </script>
 @endpush

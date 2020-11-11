@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/video-test', [BaseController::class, 'videoTest'])->name('test.video');
-Route::post('/video-test', [BaseController::class, 'uploadVideoTest'])->name('test.upload');
-
+Route::match(['get', 'post'], 'upload-video-test', [BaseController::class, 'uploadVideoTest']);
 Route::middleware(['auth'])->group(function(){
   Route::get('/', [BaseController::class, 'index'])->name('index');
   Route::prefix('profiles/{user}')->group(function(){
