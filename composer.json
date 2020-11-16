@@ -20,7 +20,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "monolog/monolog": "^2.1",
-        "pbmedia/laravel-ffmpeg0": "^7.3"
+        "pbmedia/laravel-ffmpeg": "^7.3"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
