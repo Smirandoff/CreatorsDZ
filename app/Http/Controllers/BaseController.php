@@ -50,16 +50,8 @@ class BaseController extends Controller
                 abort(500);
             } else {
                 $finalFilename = Str::random(16) . '.' . $request->file->getClientOriginalExtension();
-                $path = $this->createFileFromChunks($temp_dir, $request->resumableFilename, $request->resumableChunkSize, $request->resumableTotalSize, $request->resumableTotalChunks, $finalFilename);
-                VideoTest::truncate();
-                $video = VideoTest::create([
-                    'original_name' => $request->file->getClientOriginalName(),
-                    'real_path' => $path,
-                ]);
-                ConvertVideoForStreaming::dispatch($video);
-                return response()->json([
-                    'message' => 'La vidéo à été uploadé avec succès, veuillez revenir dans quelques minutes en attendant que sa conversion/compression soit effectué',
-                ]);
+                return $this->createFileFromChunks($temp_dir, $request->resumableFilename, $request->resumableChunkSize, $request->resumableTotalSize, $request->resumableTotalChunks, $finalFilename);
+               
             }
         }
     }
@@ -97,7 +89,20 @@ class BaseController extends Controller
             } else {
                 Storage::deleteDirectory($temp_dir);
             }
-            return $path;
+            
+            VideoTest::truncate();
+            $video = VideoTest::create([
+                'original_name' => request()->file->getClientOriginalName(),
+                'real_path' => $finaleFilename,
+            ]);
+            
+            ConvertVideoForStreaming::dispatch($video);
+            return response()->json([
+                'message' => 'La vidéo à été uploadé avec succès, veuillez revenir dans quelques minutes en attendant que sa conversion/compression soit effectué',
+            ], 200);
         }
+        return response()->json([
+
+        ], 200);
     }
 }

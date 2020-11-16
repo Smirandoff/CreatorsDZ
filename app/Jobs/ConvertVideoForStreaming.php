@@ -41,6 +41,7 @@ class ConvertVideoForStreaming implements ShouldQueue
      */
     public function handle()
     {
+        $now = now();
         $title360 = 'converted_videos/'.$this->video->real_path.'_360.mp4';
         $title480 = 'converted_videos/'.$this->video->real_path.'_480.mp4';
         $title720 = 'converted_videos/'.$this->video->real_path.'_720.mp4';
@@ -79,5 +80,7 @@ class ConvertVideoForStreaming implements ShouldQueue
         $this->video->src_720 = $title720;
         $this->video->uploaded_at = now();
         $this->video->save();
+
+        logger($now->diffForHumans(now()));
     }
 }
