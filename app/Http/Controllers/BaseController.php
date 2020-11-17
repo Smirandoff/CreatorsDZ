@@ -16,12 +16,25 @@ class BaseController extends Controller
     }
     public function videoTest()
     {
+        /**
+         * Show the videoTest view
+         */
         $video = VideoTest::first();
         return view('videoTest')->with(compact('video'));
     }
     public function uploadVideoTest(Request $request)
     {
+        /**
+         * Upload videoTest
+         */
+        /**
+         * The ResumableJS library sends first a GET request to check if the chunk exists, it then sends a POST request if the chunk
+         * does not exist, this way, we can ensure the video upload starts from the last uploaded chunk 
+         */
         if ($request->isMethod('GET')) {
+            /**
+             * If it's a GET request, check if the chunk uploaded already exists
+             */
             if (!($request->resumableChunkNumber && trim($request->resumableIdentifier) != '')) {
                 $request->resumableIdentifier = '';
             }
@@ -39,6 +52,10 @@ class BaseController extends Controller
                 return response()->json([], 404);
             }
         } else {
+            /**
+             * If it's a POST request, that means the previous get request returned a 404 code, the chunk does not exist
+             * We have to upload it
+             */
             if (isset($request->resumableIdentifier) && trim($request->resumableIdentifier) != '') {
                 $temp_dir = 'public/uploads/temp/' . $request->resumableIdentifier;
             }
@@ -90,12 +107,18 @@ class BaseController extends Controller
                 Storage::deleteDirectory($temp_dir);
             }
             
+            /**
+             * We want to keep one entry in video_tests table for testing purpose
+             */
             VideoTest::truncate();
             $video = VideoTest::create([
                 'original_name' => request()->file->getClientOriginalName(),
                 'real_path' => $finaleFilename,
             ]);
             
+            /** 
+             * We then dispatch the video compressing/conversion job
+             */
             ConvertVideoForStreaming::dispatch($video);
             return response()->json([
                 'message' => 'La vidéo à été uploadé avec succès, veuillez revenir dans quelques minutes en attendant que sa conversion/compression soit effectué',
