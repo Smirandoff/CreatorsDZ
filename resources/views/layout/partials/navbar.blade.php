@@ -49,7 +49,7 @@
      </li>
      <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
         <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        
+        <img alt="Avatar" src="{{auth()->user()->profile_photo}}" id="avatar">
         {{auth()->user()->last_name ?? ''}} 
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
